@@ -1,8 +1,11 @@
 import "./App.css";
 import Messages from "./components/Messages";
 import TextField from "./components/TextField";
+import background from './assets/mona-jetpack-background.jpg'
+
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
+import ScrollToBottom from 'react-scroll-to-bottom'
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -36,7 +39,6 @@ function App() {
     socket.on("new_message", (data) => {
       const updatedMessages = [...messages, data];
       setMessages(updatedMessages);
-      console.log(data);
     });
 
     return function cleanup() {
@@ -45,17 +47,33 @@ function App() {
     };
   }, [messages]);
   return (
-    <div className="App">
-      {messages.length !== 0 ? (
-        <Messages messages={messages} />
-      ) : (
-        <p>No Messages</p>
-      )}
-      <TextField
-        socket={socketInstance}
-        messages={messages}
-        setMessages={setMessages}
-      />
+    <div style={
+      {
+        backgroundImage: `url(${background})`,
+        width: "100vw",
+        height: "100vh",
+        position: "absolute",
+        resize: "both",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover"
+      }
+    }>
+      <div className="chatWindow">
+        <ScrollToBottom className="scrollContainer" scrollViewClassName="messageContainer">
+          {messages.length !== 0 ? (
+            <Messages messages={messages} />
+          ) : (
+            <p>No Messages!</p>
+          )}
+        </ScrollToBottom>
+        <div className='messageBar'>
+          <TextField
+            socket={socketInstance}
+            messages={messages}
+            setMessages={setMessages}
+          />
+        </div>
+      </div>
     </div>
   );
 }

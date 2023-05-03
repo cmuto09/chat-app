@@ -3,7 +3,8 @@ import { useState } from "react";
 export default function TextField({ messages, setMessages, socket }) {
   const [inputValue, setInputValue] = useState("");
 
-  function handleClick() {
+  function handleSubmit(e) {
+    e.preventDefault();
     const data = { text: inputValue };
     fetch(`${process.env.REACT_APP_BACKEND_SERVICE_URL}/messages`, {
       method: "POST",
@@ -27,16 +28,17 @@ export default function TextField({ messages, setMessages, socket }) {
     setInputValue(event.target.value);
   }
   return (
-    <>
+    <form className="chatInputarea" onSubmit={handleSubmit}>
       <input
         type="text"
         id="message"
+        className="chatInput"
         value={inputValue}
         onChange={handleTyping}
       ></input>
-      <button disabled={!inputValue} onClick={handleClick}>
-        Submit
+      <button className="chatSendBtn" disabled={!inputValue} type='submit'>
+        Send
       </button>
-    </>
+    </form>
   );
 }

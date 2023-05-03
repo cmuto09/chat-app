@@ -1,14 +1,20 @@
-.App {
+.chatWindow {
+  margin-left: 25vw;
   text-align: center;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-content: space-around;
-  align-items: center;
-  margin: 66px;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-end;
   border-style: solid;
-  border-color: deeppink;
-  margin-top: 20px;
+  border-color: black;
+  width: 50vw;
+  height: 89vh;
+  margin-top: 5vh;
+  overflow: none;
+  box-sizing: border-box;
+  background-color: rgba(100, 100, 100, 0.5);
+  border-radius: 25px;
 }
 
 .App-logo {
@@ -46,13 +52,71 @@
   }
 }
 
+.messageBar{
+  padding-top: 5px;
+}
+
+.scrollContainer {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.messageContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+}
+
 .message {
-  color: deeppink;
+  color: black;
+}
+
+.date-sent{
+  text-align: right;
+  padding-right: 5px;
+  color: rgb(167, 167, 167);
+}
+
+.chatInputarea {
+  display: flex;
+  padding: 10px 25px;
+  border-top: var(--border);
+  background: #eee;
+  border-radius: 0 0 25px 25px;
+}
+
+.chatInputarea * {
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 1em;
+}
+.chatInput {
+  flex: 1;
+  background: #FFFFFF;
+}
+.chatSendBtn {
+  margin-left: 10px;
+  background: rgb(0, 154, 196);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.23s;
+}
+.chatSendBtn:hover {
+  background: rgb(0, 180, 50);
 }
 
 .list-message {
-  margin: 5px;
+  background-color: #F4F4F4;
+  margin: 5px 0px;
+  padding: 5px 10px;
+  width: 70%;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  text-align: left;
 }
