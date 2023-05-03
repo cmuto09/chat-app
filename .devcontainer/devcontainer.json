@@ -3,7 +3,7 @@
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
-  "hostRequirements": {"cpus": 4},  
+  "hostRequirements": {"cpus": 8},  
   "forwardPorts": [3000, 5001, 5004, 5432],
   "updateContentCommand": "docker-compose build",
   "postAttachCommand": "docker-compose up --build -d && sleep 2 && docker-compose exec backend python manage.py reset_db",
