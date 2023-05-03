@@ -5,7 +5,7 @@
   },
   "forwardPorts": [3000, 5001, 5004, 5432],
   "updateContentCommand": "docker-compose build",
-  "postAttachCommand": "docker-compose up --build -d && docker-compose exec backend python manage.py reset_db",
+  "postAttachCommand": "docker-compose up --build -d && sleep 2 && docker-compose exec backend python manage.py reset_db",
   "portsAttributes": {
     "3000": {
       "label": "Chat App",
