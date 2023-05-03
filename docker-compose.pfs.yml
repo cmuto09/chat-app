@@ -1,6 +1,0 @@
-version: "3.8"
-services:
-  frontend:
-    environment:
-      - REACT_APP_BACKEND_SERVICE_URL=https://cmuto09-vigilant-fishstick-pw5696gpjw3799-5004.preview.app.github.dev
-      - REACT_APP_WEBSOCKET_SERVICE_URL=https://cmuto09-vigilant-fishstick-pw5696gpjw3799-5001.preview.app.github.dev
