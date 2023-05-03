@@ -2,5 +2,25 @@
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [3000, 5001, 5004, 5432],
+  "postAttachCommand": "docker-compose up --build -d && docker-compose exec backend python manage.py reset_db",
+  "portsAttributes": {
+    "3000": {
+      "label": "Chat App",
+      "onAutoForward": "notify"
+    },
+    "5001": {
+      "label": "Websockets",
+      "onAutoForward": "ignore"
+    },
+    "5004": {
+      "label": "API",
+      "onAutoForward": "ignore"
+    },
+    "5432": {
+      "label": "Postgres",
+      "onAutoForward": "ignore"
+    }
   }
 }

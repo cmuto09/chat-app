@@ -1,6 +1,7 @@
 from app import db
 from helper.models import Message
 from sqlalchemy import asc
+from datetime import date
 
 def get_all_messages():
     """get all messages in the db"""
@@ -20,8 +21,8 @@ def add_message(text):
     message_json = {"status":"ok",
                     "message":{"id":message.id,
                                 "text":message.text,
-                                "date":f"{message.date.year}-{message.date.month}-{message.date.day}"
-                                }
+                                "date": message.date.isoformat()
+                              }
                     }
     
     return message_json
